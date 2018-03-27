@@ -66,8 +66,8 @@ std::vector<sensors_fusion::BoundingBox> RadarProposals::GenerateProposals()
       {
         res.push_back(temp);
       }
-    }
-  }
+    }//end radar_proj.x!=0|radar_proj.y!=0
+  }//end for(int i = 0; i < 64; ++i)
   return res;
 
 }

@@ -4,6 +4,8 @@
 // Version  :
 // Copyright    :
 // Descriptoin  : 利用毫米波雷达形成候选检测目标
+//                输入：毫米波雷达坐标系下雷达数据、相机图像、两者标定矩阵（按车道线检测那种标定）
+//                输出：相机图像上物体候选包围框向量
 // References   :
 //======================================================================
 
@@ -18,7 +20,7 @@
 #include "utils/TypeDef.h"
 #include "utils/bounding_box.h"
 
-#define PLANE_WIDTH 401
+#define PLANE_WIDTH 401 //透视变换平面图尺寸
 #define PLANE_HEIGHT 501
 #define METER2PIXEL 5.0
 #define RADAR2CAR 3.50 //毫米波雷达到后轴的距离

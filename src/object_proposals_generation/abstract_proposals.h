@@ -18,7 +18,7 @@ class AbstractProposals
 public:
   AbstractProposals(){}
   virtual ~AbstractProposals(){}
-  //output
+  //不管用什么方法产生候选物体，输出都为这些物体在图像上的二维包围盒
   virtual std::vector<sensors_fusion::BoundingBox> GenerateProposals() = 0;
 
 };

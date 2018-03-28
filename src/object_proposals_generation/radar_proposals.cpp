@@ -30,7 +30,7 @@ std::vector<sensors_fusion::BoundingBox> RadarProposals::GenerateProposals()
     float radar_pt_y = radar_points_.delphi_detection_array[i].y;
     //1) 将雷达点投影到图像上
     cv::Point radar_proj = ProjectPoint2Image(radar_pt_x,radar_pt_y);
-    if(radar_proj.x!=0|radar_proj.y!=0)
+    if(radar_proj.x!=0||radar_proj.y!=0)
     {
     //2) 求出实际车宽在图像上像素车宽
       float left_pt_x = radar_pt_x - OBJECT_WIDTH/2;

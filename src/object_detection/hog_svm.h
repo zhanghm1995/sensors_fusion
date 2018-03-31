@@ -1,11 +1,12 @@
-//======================================================================
+/*======================================================================
 // Author   : Haiming Zhang
 // Email    : zhanghm_1995@qq.com
 // Version  :
 // Copyright    :
-// Descriptoin  : 基于HOG特征的SVM分类器
+// Descriptoin  : 基于HOG特征的SVM分类器——二分类问题
+ * Init函数载入SVM分类器文件,SVMPredict函数进行分类，结果输出分类结果
 // References   :
-//======================================================================
+//======================================================================*/
 
 #ifndef SRC_SENSORS_FUSION_SRC_OBJECT_DETECTION_HOG_SVM_H_
 #define SRC_SENSORS_FUSION_SRC_OBJECT_DETECTION_HOG_SVM_H_

@@ -55,6 +55,13 @@
   <build_export_depend>std_msgs</build_export_depend>
   <exec_depend>roscpp</exec_depend>
   <exec_depend>std_msgs</exec_depend>
+  <depend>ivcommon</depend>
+  <depend>sensor_driver</depend>
+  <depend>roslauch</depend>
+  <depend>sensor_msgs</depend>
+  <depend>visualization_msgs</depend>
+  <depend>cv_bridge</depend>
+  <depend>image_transport</depend>
 
 
   <!-- The export tag contains other, unspecified, tags -->

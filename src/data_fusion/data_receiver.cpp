@@ -21,7 +21,7 @@
 
 using namespace message_filters;
 void callback(const sensor_msgs::PointCloud2ConstPtr& msg_pc,
-              const frontal_delphi_radar::RadarDataConstPtr msg_radar)
+              const frontal_delphi_radar::RadarDataConstPtr& msg_radar)
 {
   ROS_INFO_STREAM("Velodyne scan received at " << msg_pc->header.stamp.toSec());
   ROS_INFO_STREAM("MMW radar received at " << msg_radar->header.stamp.toSec());

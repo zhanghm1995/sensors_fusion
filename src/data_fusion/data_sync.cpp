@@ -53,20 +53,20 @@ public:
   subLidarData_(nodehandle_,"lidar_cloud",10),
   sync(MySyncPolicy(100), subCameraImage_, subLidarData_)
 {
+    //发布同步后的数据
+    pubImage_ = nodehandle_.advertise<sensor_msgs::Image>("/synchronized/image",10);
+    pubLidar_ = nodehandle_.advertise<sensor_msgs::PointCloud2>("/synchronized/lidar_point_cloud",10);
+    ROS_INFO("lidar and camera data synchronizing started");
     sync.registerCallback(boost::bind(&DataSync::callback, this,_1, _2));
-    init();
 }
 ~DataSync()
 {
   processthread_->join();
 }
-void init()
-{
-
-}
 
 void callback(const sensor_msgs::ImageConstPtr& image_msg,const sensor_msgs::PointCloud2ConstPtr& lidar_msg)
 {
+  ROS_INFO("Sync_Callback");
 
 }
 
@@ -81,6 +81,10 @@ private:
   subLidarData subLidarData_;//订阅激光雷达消息
   typedef message_filters::sync_policies::ApproximateTime<sensor_msgs::Image,sensor_msgs::PointCloud2> MySyncPolicy;
   message_filters::Synchronizer< MySyncPolicy > sync;
+
+  //发布同步后的数据
+  ros::Publisher pubImage_;
+  ros::Publisher pubLidar_;
 
 
   bool processthreadfinished_;

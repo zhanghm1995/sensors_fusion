@@ -38,7 +38,7 @@
 #include <message_filters/sync_policies/approximate_time.h>
 
 
-#include "velodyne/HDL32Structure.h"
+#include "src/velodyne/HDL32Structure.h"
 #include <glog/logging.h>
 #include "common/blocking_queue.h"
 #include "common/make_unique.h"
@@ -49,9 +49,9 @@ public:
   DataSync(ros::NodeHandle& nodehandle):nodehandle_(nodehandle)
   ,processthread_(NULL)
   ,processthreadfinished_ (false),
-  subCameraImage_(nodehandle_,"camera_image",10),
-  subLidarData_(nodehandle_,"lidar_cloud",10),
-  sync(MySyncPolicy(100), subCameraImage_, subLidarData_)
+  subCameraImage_(nodehandle_,"left_camera_image",10),
+  subLidarData_(nodehandle_,"lidar_cloud_calibrated",10),
+  sync(MySyncPolicy(10), subCameraImage_, subLidarData_)
 {
     //发布同步后的数据
     pubImage_ = nodehandle_.advertise<sensor_msgs::Image>("/synchronized/image",10);
@@ -67,7 +67,8 @@ public:
 void callback(const sensor_msgs::ImageConstPtr& image_msg,const sensor_msgs::PointCloud2ConstPtr& lidar_msg)
 {
   ROS_INFO("Sync_Callback");
-
+  pubImage_.publish(*image_msg);
+  pubLidar_.publish(*lidar_msg);
 }
 
 

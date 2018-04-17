@@ -1,0 +1,39 @@
+yolo_model:
+
+  config_file:
+    name: yolov2.cfg
+  weight_file:
+    name: yolov2.weights
+  threshold:
+    value: 0.8
+  detection_classes:
+    names:
+#      - person
+#      - bicycle
+      - car
+#      - motorbike
+#      - aeroplane
+      - bus
+      - train
+      - truck
+#      - boat
+#      - traffic light
+#      - fire hydrant
+#      - stop sign
+#      - parking meter
+#      - bench
+#      - bird
+#      - cat
+#      - dog
+#      - horse
+#      - sheep
+#      - cow
+#      - elephant
+#      - bear
+#      - zebra
+#      - giraffe
+#      - backpack
+#      - umbrella
+#      - handbag
+#      - tie
+#      - suitcase

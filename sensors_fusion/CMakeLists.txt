@@ -19,6 +19,7 @@ set(PACKAGE_DEPENDENCIES
   tf2_ros
   urdf
   visualization_msgs
+  frontal_delphi_radar
 )
 
 find_package(catkin REQUIRED COMPONENTS ${PACKAGE_DEPENDENCIES})
@@ -49,14 +50,14 @@ catkin_package(
   DEPENDS EIGEN3 PCL OpenCV
   INCLUDE_DIRS src
 )
-include_directories(SYSTEM  ${catkin_INCLUDE_DIRS} ${ivcommon_INCLUDE_DIRS} ${sensordriver_INCLUDE_DIRS} ${LUA_INCLUDE_DIR} ${PCL_INCLUDE_DIRS} 
+include_directories(SYSTEM  ${catkin_INCLUDE_DIRS} ${ivcommon_INCLUDE_DIRS} ${sensordriver_INCLUDE_DIRS} ${sensor_driver_INCLUDE_DIRS} ${LUA_INCLUDE_DIR} ${PCL_INCLUDE_DIRS} 
 					${Boost_INCLUDE_DIRS} ${EIGEN3_INCLUDE_DIR} src include)
 
 add_executable(data_sync src/data_fusion/data_sync.cpp)
-target_link_libraries(data_sync PUBLIC ${catkin_LIBRARIES}  ${ivcommon_LIBRARIES}  ${PCL_LIBRARIES}  ${Boost_LIBRARIES}  ${OpenCV_LIBS} ${sensor_driver_INCLUDE_DIRS} utils ivsensor glog gflags)
+target_link_libraries(data_sync PUBLIC ${catkin_LIBRARIES}  ${ivcommon_LIBRARIES}  ${PCL_LIBRARIES}  ${Boost_LIBRARIES}  ${OpenCV_LIBS} ${sensor_driver_LIBRARIES})
 
 add_executable(data_receiver src/data_fusion/data_receiver.cpp)
-target_link_libraries(data_receiver PUBLIC ${catkin_LIBRARIES}  ${ivcommon_LIBRARIES}  ${PCL_LIBRARIES}  ${Boost_LIBRARIES}  ${OpenCV_LIBS} ${sensor_driver_INCLUDE_DIRS} utils ivsensor glog gflags)
+target_link_libraries(data_receiver PUBLIC ${catkin_LIBRARIES}  ${ivcommon_LIBRARIES}  ${PCL_LIBRARIES}  ${Boost_LIBRARIES}  ${OpenCV_LIBS}  ${sensor_driver_LIBRARIES})
 
 set(TARGET_COMPILE_FLAGS "${TARGET_COMPILE_FLAGS} -std=c++11")
 set_target_properties(data_sync PROPERTIES

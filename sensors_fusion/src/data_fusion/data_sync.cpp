@@ -38,7 +38,7 @@
 #include <message_filters/sync_policies/approximate_time.h>
 
 
-#include "src/velodyne/HDL32Structure.h"
+#include "velodyne/HDL32Structure.h"
 #include <glog/logging.h>
 #include "common/blocking_queue.h"
 #include "common/make_unique.h"

@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<launch>
+  <arg name="vehicle_name"		default="BYD_TANG"/> <!--BYD_TANG, HUACHEN-->
+  <arg name="listen_port"		  default="9010"/>
+  
+  <!-- camera API to get camera image-->
+  <node pkg="marko_camera" type="my_publisher" name="marko_camera" output="screen">
+  </node>
+  
+ <!--get vehicel ECU data-->
+  <node pkg="frontal_delphi_radar" type="get_ECU" name="get_ecu_data" output="screen">
+      <param name="vehicle_name"	value="$(arg vehicle_name)"/>
+      <param name="listen_port"		value="$(arg listen_port)"/>
+  </node>
+
+  <!-- ESR radar API to get radar data-->
+  <node pkg="frontal_delphi_radar" type="get_radar_data" name="get_radar_data" output="screen">
+  </node>
+  <!-- radar data visualization-->
+  <node pkg="frontal_delphi_radar" type="frontal_delphi_radar" name="delphi_radar_visualizer" output="screen">
+  </node>
+
+</launch>

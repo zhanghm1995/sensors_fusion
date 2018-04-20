@@ -16,8 +16,14 @@
   <!-- ESR radar API to get radar data-->
   <node pkg="frontal_delphi_radar" type="get_radar_data" name="get_radar_data" output="screen">
   </node>
+  
   <!-- radar data visualization-->
   <node pkg="frontal_delphi_radar" type="frontal_delphi_radar" name="delphi_radar_visualizer" output="screen">
   </node>
+
+  <!-- Launch RViz-->
+  <arg  name="rviz" default="$(find data_fusion)/rviz_cfg/camera_viewer.rviz" />
+  <node pkg="rviz" type="rviz" name="camera_viewer_rviz" args="-d $(arg rviz)" output="screen"
+  />
 
 </launch>

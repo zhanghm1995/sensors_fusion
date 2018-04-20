@@ -59,6 +59,9 @@ target_link_libraries(data_sync PUBLIC ${catkin_LIBRARIES}  ${ivcommon_LIBRARIES
 add_executable(data_receiver src/data_receiver.cpp)
 target_link_libraries(data_receiver PUBLIC ${catkin_LIBRARIES}  ${ivcommon_LIBRARIES}  ${PCL_LIBRARIES}  ${Boost_LIBRARIES}  ${OpenCV_LIBS}  ${sensor_driver_LIBRARIES})
 
+add_executable(cam_radar_sync src/cam_radar_sync.cpp)
+target_link_libraries(cam_radar_sync PUBLIC ${catkin_LIBRARIES}  ${ivcommon_LIBRARIES}  ${PCL_LIBRARIES}  ${Boost_LIBRARIES}  ${OpenCV_LIBS}  ${sensor_driver_LIBRARIES})
+
 set(TARGET_COMPILE_FLAGS "${TARGET_COMPILE_FLAGS} -std=c++11")
 set_target_properties(data_sync PROPERTIES
   COMPILE_FLAGS ${TARGET_COMPILE_FLAGS})
@@ -66,14 +69,14 @@ set_target_properties(data_sync PROPERTIES
 ##### Install #####
 ###################
 install(DIRECTORY launch DESTINATION share/data_fusion/)
-install(TARGETS data_sync data_receiver
+install(TARGETS data_sync data_receiver cam_radar_sync
   ARCHIVE DESTINATION ${CATKIN_PACKAGE_LIB_DESTINATION}
   LIBRARY DESTINATION ${CATKIN_PACKAGE_LIB_DESTINATION}
   RUNTIME DESTINATION ${CATKIN_PACKAGE_BIN_DESTINATION}
 )
 
 install(
-  TARGETS data_sync data_receiver
+  TARGETS data_sync data_receiver cam_radar_sync
   EXPORT data_fusionExport
   ARCHIVE DESTINATION ${CATKIN_PACKAGE_LIB_DESTINATION}
   LIBRARY DESTINATION ${CATKIN_PACKAGE_LIB_DESTINATION}
